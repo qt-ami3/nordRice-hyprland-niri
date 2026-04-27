@@ -1,3 +1,7 @@
+# Nord Rice for hyprland or niri
+
+![Place holder.](screenCaptures/niriScreenshot.png)
+
 ### Disclaimer!
 
 spotify uses spicetify's Comfy theme by BYRI4, ohItsTom, and kyrie25. setup spicetify, install the theme, and select nord under the drop-down box next to the "search exstensions" box.

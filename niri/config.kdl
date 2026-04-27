@@ -1,0 +1,238 @@
+// Niri config ported from Hyprland.
+// Theme: Nord (Frost Blue #88c0d0 active, Polar Night #4c566a inactive).
+// Target: ThinkPad X1 Yoga Gen 6, eDP-1 3840x2400 @ scale 1.6.
+//
+// Reference: https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
+
+hotkey-overlay {
+    skip-at-startup
+}
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            options "caps:escape"
+        }
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        accel-profile "adaptive"
+    }
+
+    mouse {
+        accel-speed 0.3
+    }
+
+    focus-follows-mouse
+}
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+output "eDP-1" {
+    mode "3840x2400@60.000"
+    scale 1.6
+    transform "normal"
+    position x=0 y=0
+}
+
+layout {
+    gaps 10
+    center-focused-column "never"
+
+    //default-column-width { proportion 0.25; }
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.66667
+        proportion 1.0
+        proportion 0.25
+    }
+
+    default-column-width { proportion 0.5; }
+
+    blur {
+        on
+        passes 2
+        radius 8.0
+        noise 0.0
+        brightness 1.0
+        saturation 1.1696
+    }
+
+    focus-ring {
+        width 3
+        active-color "#88c0d0"
+        inactive-color "#4c566a"
+        // Gradient mirrors Hyprland's 45deg active border.
+        active-gradient from="#88c0d0" to="#88c0d0" angle=45
+    }
+
+    border {
+        off
+    }
+
+    struts {
+        left 0
+        right 0
+        top 0
+        bottom 0
+    }
+}
+
+
+spawn-at-startup "gentoo-pipewire-launcher"
+spawn-at-startup "swaybg" "-i" "/home/aknu/wp/HDA5Go3WoAEsgPi.png" "-m" "fill"
+spawn-at-startup "waybar"
+// spawn-at-startup "python3" "/home/aknu/.config/niri/auto-maximize.py"
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "bash" "/home/aknu/.config/niri/xdg-env.sh"
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot-%Y-%m-%d-%H-%M-%S.png"
+
+animations {
+    // Match Hyprland's easeOutQuint feel.
+    slowdown 0.8
+}
+
+environment {
+    XCURSOR_SIZE "24"
+    HYPRCURSOR_SIZE "24"
+    QT_QPA_PLATFORM "wayland"
+    MOZ_ENABLE_WAYLAND "1"
+}
+
+window-rule {
+    open-focused false
+    geometry-corner-radius 10
+    clip-to-geometry true
+    opacity 0.9
+    blur {
+        on
+        passes 2
+        radius 8.0
+        noise 0.0
+        brightness 1.0
+        saturation 1.1696
+    }
+}
+
+window-rule {
+    match app-id="zen"
+    opacity 0.9
+    focus-ring {
+        off
+    }
+}
+
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+    opacity 0.9
+    blur {
+        off
+    }
+    focus-ring {
+        off
+    }
+    open-floating true
+}
+
+// Keybinds — mirror Hyprland ($mainMod = Super).
+binds {
+
+    Mod+G hotkey-overlay-title="Grid Layout 2x2"{
+      spawn-sh "$HOME/.config/niri/niri-layout.sh grid"
+    }
+    Mod+Alt+M hotkey-overlay-title="Master-Stack Layout"{
+      spawn-sh "$HOME/.config/niri/niri-layout.sh grid master"
+    }
+    Mod+Alt+5 hotkey-overlay-title="Split 50/50"{
+      spawn-sh "$HOME/.config/niri/niri-layout.sh split"
+    }
+
+    Mod+Return { spawn "kitty"; }
+    Mod+Shift+Q { close-window; }
+    Mod+M { quit; }
+    Mod+E { spawn "dolphin"; }
+    Mod+Shift+P { spawn "/home/aknu/appImages/aseprite.sh"; }
+    Mod+V { toggle-window-floating; }
+    Mod+R { spawn "wofi" "--show" "drun"; }
+    Mod+D { spawn "wofi" "--show" "drun"; }
+    Mod+O { spawn "/home/aknu/appImages/tor-browser/start-tor-browser.desktop"; }
+
+    // Focus movement (hjkl like vim).
+    Mod+H { focus-column-left; }
+    Mod+L { focus-column-right; }
+    Mod+K { focus-window-up; }
+    Mod+J { focus-window-down; }
+
+    // Move windows.
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+L { move-column-right; }
+    Mod+Shift+K { move-window-up; }
+    Mod+Shift+J { move-window-down; }
+
+    // Workspaces 1–10.
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+0 { focus-workspace 10; }
+
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+    Mod+Shift+0 { move-column-to-workspace 10; }
+
+    // Scroll through workspaces (matches Hyprland mouse scroll bind).
+    // Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    // Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+
+    // Column width helpers (niri's scrollable paradigm).
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+F     { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+
+    // Volume — pamixer + rounded notification.
+    Mod+F3 { spawn "sh" "-c" "pamixer --unmute && pamixer --allow-boost -i 5 && /home/aknu/.config/niri/pamixerRound.sh"; }
+    Mod+F2 { spawn "sh" "-c" "pamixer --unmute && pamixer --allow-boost -d 5"; }
+    Mod+F1 { spawn "pamixer" "--mute"; }
+
+    // Screen flip (180°). The Hyprland script uses hyprctl; see niri/flip-screen.sh for niri equivalent.
+    Mod+Shift+R { spawn "/home/aknu/.config/niri/flip-screen.sh"; }
+
+    // Brightness.
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "-e4" "-n2" "set" "5%+"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "-e4" "-n2" "set" "5%-"; }
+
+    // Media.
+    XF86AudioNext  { spawn "playerctl" "next"; }
+    XF86AudioPause { spawn "playerctl" "play-pause"; }
+    XF86AudioPlay  { spawn "playerctl" "play-pause"; }
+    XF86AudioPrev  { spawn "playerctl" "previous"; }
+
+    // Screenshots (niri built-ins).
+    Print       { screenshot; }
+    Ctrl+Print  { screenshot-screen; }
+    Alt+Print   { screenshot-window; }
+}

@@ -32,34 +32,37 @@ zen-browser, fish, fastfetch, hyprland or niri, kitty, legcord(The custom discor
 
 To install:
 
-    Omit niri or hyprland depending on what you plan on using.
+Omit niri or hyprland depending on what you plan on using.
 
-    legcord has an appimage at: https://github.com/Legcord/Legcord/releases/tag/v1.2.4
+legcord has an appimage at: https://github.com/Legcord/Legcord/releases/tag/v1.2.4
 
-    Arch based - ```sudo pacman -S fish fastfetch hyprland kitty starship waybar``` **for arch the best way to install legcord is using the arch user repository, this is beyond the scope of this README. Please refer to the yay installation guide; https://github.com/Jguer/yay**
+Arch based - ```sudo pacman -S fish fastfetch hyprland kitty starship waybar``` **for arch the best way to install legcord is using the arch user repository, this is beyond the scope of this README. Please refer to the yay installation guide; https://github.com/Jguer/yay**
 
-    ubuntu based **Not recommended** - **legcord had a .deb file at github.com/Legcord/Legcord/releases, hyprland & niri is not in any stable repo. ```sudo apt install fish fastfetch kitty waybar && curl -sS https://starship.rs/install.sh | sh && cd Downloads/ && sudo apt install ./<downloaded-file>.deb``` 
+ubuntu based **Not recommended** - **legcord had a .deb file at github.com/Legcord/Legcord/releases, hyprland & niri is not in any stable repo. ```sudo apt install fish fastfetch kitty waybar && curl -sS https://starship.rs/install.sh | sh && cd Downloads/ && sudo apt install ./<downloaded-file>.deb``` 
 
-    fedora based - ```sudo dnf install fish fastfetch hyprland kitty starship waybar && sudo dnf copr enable yalter/niri && sudo dnf install niri```
+fedora based - ```sudo dnf install fish fastfetch hyprland kitty starship waybar && sudo dnf copr enable yalter/niri && sudo dnf install niri```
 
-    gentoo based - ```sudo emerge -av app-shells/fish app-misc/fastfetch x11-terms/kitty app-shells/starship gui-apps/waybar && sudo eselect repository enable guru && sudo emaint sync -r guru && sudo emerge -av gui-wm/hyprland``` **replace gui-wm/hyprland with gui-wm/niri for niri**
+gentoo based - ```sudo emerge -av app-shells/fish app-misc/fastfetch x11-terms/kitty app-shells/starship gui-apps/waybar && sudo eselect repository enable guru && sudo emaint sync -r guru && sudo emerge -av gui-wm/hyprland``` **replace gui-wm/hyprland with gui-wm/niri for niri**
 
 ### Backing up your config
 
 Before starting config, its best practice to backup your existing .config directory;
 
-    ```cd && mkdir bak && cp -rf .config bak/```
+```cd && mkdir bak && cp -rf .config bak/```
 
 If you are curious or not in the know;
 
-    ```cd``` Is used to navigate through folders in the Linux terminal, but alone it just returns you to your user directory.
-    ```mkdir bak``` Makes a folder labeled bak in the current folder.
-    ```&&``` Tells the shell this is the start of a new command.
-    ```cp -rf .config bak/``` Copies the .config folder into the bak folder with with the arguments r for recursive and f for folder: copy -recursivefolder folderToCopy directoryToReceive.
+    cd Is used to navigate through folders in the Linux terminal, but alone it just returns you to your user directory.
+    
+    mkdir bak Makes a folder labeled bak in the current folder.
+    
+    && Tells the shell this is the start of a new command.
+    
+    cp -rf .config bak/ Copies the .config folder into the bak folder with with the arguments r for recursive and f for folder: copy -recursivefolder folderToCopy directoryToReceive.
 
 To restore your backup;
 
-    ```cd && rm -rf .config && cp -rf bak/.config/ /home/yourUserName/```
+```cd && rm -rf .config && cp -rf bak/.config/ /home/yourUserName/```
 
 rm is remove and uses the same argument flags as cp. If you are unsure of your user name, enter "whoami" into the terminal.
 

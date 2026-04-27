@@ -30,20 +30,29 @@ other utilities such as btop and nvim are trivial to install and not usefull to 
 ### Programs used
 zen-browser, fish, fastfetch, hyprland or niri, kitty, legcord(The custom discord used in screen-shots.), starship, and waybar.
 
-To install:
+### To install
 
 Omit niri or hyprland depending on what you plan on using.
 
 legcord has an appimage at: https://github.com/Legcord/Legcord/releases/tag/v1.2.4
 
-Arch based - sudo pacman -S fish fastfetch hyprland kitty starship waybar **for arch the best way to install legcord is using the arch user repository, this is beyond the scope of this README. Please refer to the yay installation guide; https://github.com/Jguer/yay**
+Arch based:
+```
+sudo pacman -S fish fastfetch hyprland kitty starship waybar
+```
+**for arch the best way to install legcord is using the arch user repository, this is beyond the scope of this README. Please refer to the yay installation guide; https://github.com/Jguer/yay**
 
-ubuntu based **Not recommended** - **legcord had a .deb file at github.com/Legcord/Legcord/releases, hyprland & niri is not in any stable repo. sudo apt install fish fastfetch kitty waybar && curl -sS https://starship.rs/install.sh | sh && cd Downloads/ && sudo apt install ./<downloaded-file>.deb
-
-fedora based - sudo dnf install fish fastfetch hyprland kitty starship waybar && sudo dnf copr enable yalter/niri && sudo dnf install niri
-
-gentoo based - sudo emerge -av app-shells/fish app-misc/fastfetch x11-terms/kitty app-shells/starship gui-apps/waybar && sudo eselect repository enable guru && sudo emaint sync -r guru && sudo emerge -av gui-wm/hyprland **replace gui-wm/hyprland with gui-wm/niri for niri**
-
+ubuntu based **Not recommended** - **legcord had a .deb file at github.com/Legcord/Legcord/releases, hyprland & niri is not in any stable repo. 
+```sudo apt install fish fastfetch kitty waybar && curl -sS https://starship.rs/install.sh | sh && cd Downloads/ && sudo apt install ./<downloaded-file>.deb
+```
+fedora based: 
+```
+sudo dnf install fish fastfetch hyprland kitty starship waybar && sudo dnf copr enable yalter/niri && sudo dnf install niri
+```
+gentoo based:
+```
+sudo emerge -av app-shells/fish app-misc/fastfetch x11-terms/kitty app-shells/starship gui-apps/waybar && sudo eselect repository enable guru && sudo emaint sync -r guru && sudo emerge -av gui-wm/hyprland **replace gui-wm/hyprland with gui-wm/niri for niri**
+```
 ### Backing up your config
 
 Before starting config, its best practice to backup your existing .config directory;

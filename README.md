@@ -4,6 +4,8 @@
 
 ### Disclaimer!
 
+At the time of writing, niri does not have background blur in the main tree, you will have to compile it from source from the Naxdy fork: https://github.com/Naxdy/niri
+
 spotify uses spicetify's Comfy theme by BYRI4, ohItsTom, and kyrie25. setup spicetify, install the theme, and select nord under the drop-down box next to the "search exstensions" box.
 
 Because of the volitile and unique nature of a users Zen browser config, aswell as safety concerns, I will not be including a guide or any files to my Zen config. However, achieving a similar look is possible with minimal effort;

@@ -36,6 +36,7 @@ gestures {
 
 output "eDP-1" {
     mode "3840x2400@60.000"
+    variable-refresh-rate
     scale 1.6
     transform "normal"
     position x=0 y=0
@@ -66,6 +67,10 @@ layout {
     }
 
     focus-ring {
+        // Disabled: border below uses identical colors and handles
+        // active/inactive highlighting. With both on, the focus ring
+        // stacks outside the border, making focused windows look thicker.
+        off
         width 3
         active-color "#88c0d0"
         inactive-color "#4c566a"
@@ -74,7 +79,12 @@ layout {
     }
 
     border {
-        off
+        on
+        width 3
+        active-color "#88c0d0"
+        inactive-color "#4c566a"
+        // Gradient mirrors Hyprland's 45deg active border.
+        active-gradient from="#88c0d0" to="#88c0d0" angle=45
     }
 
     struts {
@@ -85,7 +95,7 @@ layout {
     }
 }
 
-
+// spawn-at-startup "brightnessctl set 504"
 spawn-at-startup "gentoo-pipewire-launcher"
 spawn-at-startup "swaybg" "-i" "/home/aknu/wp/HDA5Go3WoAEsgPi.png" "-m" "fill"
 spawn-at-startup "waybar"
@@ -107,6 +117,8 @@ environment {
     HYPRCURSOR_SIZE "24"
     QT_QPA_PLATFORM "wayland"
     MOZ_ENABLE_WAYLAND "1"
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_DESKTOP "niri"
 }
 
 window-rule {
@@ -125,7 +137,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="zen"
+    match app-id="zed"
     opacity 0.9
     focus-ring {
         off
@@ -133,16 +145,33 @@ window-rule {
 }
 
 window-rule {
-    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
-    default-floating-position x=10 y=10 relative-to="bottom-right"
+    match app-id="steam"
     opacity 0.9
-    blur {
+    focus-ring {
+        on
+    }
+    border {
+      off
+    }
+}
+
+window-rule {
+    match app-id="obsidian"
+    opacity 0.9
+    focus-ring {
+        on
+    }
+    border {
         off
     }
+}
+
+window-rule {
+    match app-id="zen"
+    opacity 0.9
     focus-ring {
         off
     }
-    open-floating true
 }
 
 // Keybinds — mirror Hyprland ($mainMod = Super).
